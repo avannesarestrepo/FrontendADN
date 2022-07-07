@@ -2,6 +2,11 @@
     <!--crear input hidden id_vehiculo-->
     <div class="flex-container-form mx-auto">
         <div class="form">
+            <div *ngIf="!esCrear">
+                <label>Placa</label>
+                <input class="form-control" disabled formControlName="placa">
+            </div>
+
             <div class="form-group mx-auto">
                 <label>Modalidad</label>
                 <select id="tipoModalidad" class="form-control" formControlName="tipoModalidad">
@@ -11,7 +16,7 @@
                     <option value="MENSUAL">Mensual</option>
                 </select>
             </div>
-            <div class="form-group mb-3">
+            <div class="form-group mb-3" *ngIf="esCrear">
                 <label>Placa</label>
                 <input class="form-control" 
                        type="text" 
@@ -22,7 +27,7 @@
                 />
             </div>
 
-            <div class="form-group mb-3">
+            <div class="form-group mb-3" *ngIf="facturaForm.value?.tipoModalidad != 'HORA' || !esCrear">
                 <label>Estado</label>
                 <select id="estadoFactura" class="form-control" formControlName="estadoFactura" >
                     <option value="CONFIRMADA" >Confirmar</option>
@@ -34,15 +39,13 @@
             <button 
                 type="button" 
                 class="btn btn-info mb-3"
-                (click)="guardar()">
-                Guardar
+                (click)="ejecutarAccion()">
+                {{esCrear ? "Guardar" : "Actualizar"}}
             </button>
         </div>
 
-        <router-outlet></router-outlet>
         <button class="boton_cerrar btn btn-light" id="linkListarPropietarios" routerLink="/factura">
             <i class="bi bi-x-circle"></i>
         </button>
     </div>
-
 </form>

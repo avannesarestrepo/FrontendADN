@@ -1,7 +1,7 @@
-export interface Vehiculo{
-    id: number;
-    propietario: object;
+export class Vehiculo{
     placa: string;
-    descripcion: string;
-    tipoVehiculo: string;
+
+    constructor(placa: string){
+        this.placa = placa;
+    }
 }

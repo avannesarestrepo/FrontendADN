@@ -62,6 +62,22 @@ export class FacturaService extends HttpApiErrorClass{
         );
     }
 
+    public modificar(factura: Factura): Observable<{
+        error: boolean,
+        msg: string,
+        data: any
+    }> {
+        const response = { error: false, msg: '', data: null };
+        return this.http.doPut<Factura, { error: boolean, msg: string, data: any }>
+            (`${environment.endpoint}/factura/${factura.id}`, factura)
+            .pipe(
+                map(r => {
+                    response.data = r;
+                    return response;
+                }), catchError(this.error)
+            );
+    }
+
     public anular(factura: Factura): Observable<{
         error: boolean,
         msg: string,
