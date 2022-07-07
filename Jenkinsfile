@@ -1,5 +1,6 @@
 @Library('ceiba-jenkins-library') _
 
+
 pipeline {
   //Donde se va a ejecutar el Pipeline
   agent {
@@ -8,24 +9,14 @@ pipeline {
 
   //Opciones específicas de Pipeline dentro del Pipeline
   options {
-    	buildDiscarder(logRotator(numToKeepStr: '3'))
+    	buildDiscarder(logRotator(numToKeepStr: '5'))
  	disableConcurrentBuilds()
   }
 
   //Una sección que define las herramientas “preinstaladas” en Jenkins
   tools {
-    jdk 'JDK8_Centos' //Verisión preinstalada en la Configuración del Master
+	nodejs 'NodeJS16'
   }
-/*	Versiones disponibles
-      JDK8_Mac
-      JDK6_Centos
-      JDK7_Centos
-      JDK8_Centos
-      JDK10_Centos
-      JDK11_Centos
-      JDK13_Centos
-      JDK14_Centos
-*/
 
   //Aquí comienzan los “items” del Pipeline
   stages{
