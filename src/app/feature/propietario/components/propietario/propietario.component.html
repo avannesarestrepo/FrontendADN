@@ -1,0 +1,38 @@
+
+
+<div class="formulario">
+    <button id="linkCrearPropietario" routerLink="./crear">Crear Propietario</button>
+    <router-outlet></router-outlet>
+</div>
+
+
+<div class="listarPropietario">
+    <table border="2">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>TipoDocumento</th>
+                <th>Documento</th>
+                <th>NombreCompleto</th>
+                <th>Email</th>
+                <th>Telefono</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let propietario of listaPropietario">
+                <td data-label="ID">{{propietario.id}}</td>
+                <td data-label="Tipo Documento">{{propietario.tipoDocumento}}</td>
+                <td data-label="Documento">{{propietario.documento}}</td>
+                <td data-label="Nombre">{{propietario.nombreCompleto}}</td>
+                <td data-label="Email">{{propietario.email}}</td>
+                <td data-label="Telefono">{{propietario.telefono}}</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+

@@ -1,0 +1,29 @@
+<form>
+    <div class="flex-container">
+        <div class="form">
+            <div>
+                <label>Tipo documento</label>
+                <select>
+                    <option value="CC">Cédula Ciudadanía</option>
+                    <option value="CE">Cédula Extranjería</option>
+                    <option value="NIT">NIT</option>
+                    <option value="PS">Pasaporte</option>
+                    <option value="TI">Tarjeta identidad</option>
+                </select>
+            </div>
+            <div>
+                <label>Prueba</label>
+                <input type="text" name="prueba" id="prueba"/>
+            </div>
+            <div>
+                <label>Prueba</label>
+                <input type="text" name="prueba" id="prueba"/>
+            </div>
+            
+        </div>
+
+        <router-outlet></router-outlet>
+        <button class="boton_cerrar" id="linkListarPropietarios" routerLink="/propietario">X</button>
+    </div>
+
+</form>
