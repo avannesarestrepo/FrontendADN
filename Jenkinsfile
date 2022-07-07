@@ -64,9 +64,9 @@ pipeline {
 
     stage('Static Code Analysis') {
       steps{
-		sonarqubeMasQualityGatesP(sonarKey: 'co.com.ceiba.adn:sistema.control.parqueadero.front.angie.restrepo',
-		sonarName: 'ADN-SistemaControlParqueadero-Front[angie.restrepo]',
-		sonarPathProperties: './sonar-project.properties'
+		sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:sistema.control.parqueadero.front.angie.restrepo',
+		sonarName:'ADN-SistemaControlParqueadero-Front[angie.restrepo]',
+		sonarPathProperties:'./sonar-project.properties')
       }
     }
 
