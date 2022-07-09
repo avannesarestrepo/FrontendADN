@@ -1,13 +1,13 @@
 
-
-<div class="formulario">
-    <button id="linkCrearPropietario" routerLink="./crear">Crear Propietario</button>
+<div class="container">
+    <button id="linkCrearPropietario" 
+            routerLink="./crear"
+            class="btn btn-warning mt-3">
+            Crear Propietario
+    </button>
     <router-outlet></router-outlet>
-</div>
 
-
-<div class="listarPropietario">
-    <table border="2">
+    <table class="table-bordered mx-auto">
         <thead>
             <tr>
                 <th>ID</th>
@@ -16,7 +16,6 @@
                 <th>NombreCompleto</th>
                 <th>Email</th>
                 <th>Telefono</th>
-                <th></th>
                 <th></th>
             </tr>
         </thead>
@@ -29,10 +28,7 @@
                 <td data-label="Email">{{propietario.email}}</td>
                 <td data-label="Telefono">{{propietario.telefono}}</td>
                 <td></td>
-                <td></td>
             </tr>
         </tbody>
     </table>
 </div>
-
-

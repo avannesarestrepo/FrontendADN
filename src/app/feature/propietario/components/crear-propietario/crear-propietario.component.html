@@ -1,9 +1,9 @@
 <form>
-    <div class="flex-container">
+    <div class="flex-container-form mx-auto">
         <div class="form">
-            <div>
+            <div class="form-group mx-auto">
                 <label>Tipo documento</label>
-                <select>
+                <select id="tipoDocumento" class="form-control" formControlName="tipoDocumento">
                     <option value="CC">Cédula Ciudadanía</option>
                     <option value="CE">Cédula Extranjería</option>
                     <option value="NIT">NIT</option>
@@ -11,19 +11,56 @@
                     <option value="TI">Tarjeta identidad</option>
                 </select>
             </div>
-            <div>
-                <label>Prueba</label>
-                <input type="text" name="prueba" id="prueba"/>
+            <div class="form-group mx-auto">
+                <label>Documento</label>
+                <input type="text" 
+                       name="documento" 
+                       id="documento"
+                       formControlName="documento"
+                       class="form-control"
+                />
             </div>
-            <div>
-                <label>Prueba</label>
-                <input type="text" name="prueba" id="prueba"/>
+            <div class="form-group mx-auto">
+                <label>Nombre Completo</label>
+                <input type="text" 
+                       name="nombreCompleto" 
+                       id="nombreCompleto"
+                       formControlName="nombreCompleto"       
+                       class="form-control"
+                />
             </div>
-            
+            <div class="form-group mx-auto">
+                <label>Email</label>
+                <input type="text"
+                       name="email"
+                       id="email"
+                       formControlName="email"
+                       class="form-control"
+                />
+            </div>
+            <div class="form-group mx-auto">
+                <label>Télefono</label>
+                <input type="phone" 
+                       name="telefono"
+                       id="telefono"
+                       formControlName="telefono"
+                       class="form-control mb-3"
+                />
+            </div>
+
+            <button type="button"
+                    class="btn btn-info mb-3"
+            >
+                Guardar
+            </button>
         </div>
 
         <router-outlet></router-outlet>
-        <button class="boton_cerrar" id="linkListarPropietarios" routerLink="/propietario">X</button>
+        <button class="boton_cerrar btn btn-light" 
+                id="linkListarPropietarios" 
+                routerLink="/propietario">
+            <i class="bi bi-x-circle"></i>
+        </button>
     </div>
 
 </form>
