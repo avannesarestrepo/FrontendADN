@@ -11,6 +11,9 @@ const routes: Routes = [
         {
           path: 'crear',
           component: CrearPropietarioComponent
+        },{
+          path: 'editar/:id',
+          component: CrearPropietarioComponent
         }
       ]
   }

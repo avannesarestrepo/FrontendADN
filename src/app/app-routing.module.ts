@@ -7,9 +7,7 @@ import { HomeComponent } from '@home/home.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, canActivate: [SecurityGuard]  },
-  { path: 'producto', loadChildren: () => import('@producto/producto.module').then(mod => mod.ProductoModule) },
-  { path: 'propietario', loadChildren: () => import('@propietario/propietario.module').then(mod => mod.PropietarioModule) },
-  { path: 'factura', loadChildren: () => import('@factura/factura.module').then(mod => mod.FacturaModule) }
+  { path: 'propietario', loadChildren: () => import('@propietario/propietario.module').then(mod => mod.PropietarioModule) }
 ];
 
 @NgModule({

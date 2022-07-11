@@ -2,10 +2,23 @@
 <div class="container">
     <button id="linkCrearPropietario" 
             routerLink="./crear"
-            class="btn btn-warning mt-3">
-            Crear Propietario
+            class="btn btn-primary mt-3">
+            <strong class="text-light">Crear Propietario</strong>
     </button>
     <router-outlet></router-outlet>
+
+    <div class="col-sm-3">
+        <input
+        class="form-control"
+        type="text"
+        id="filterCustomer"
+        autocomplete="off"
+        placeholder="Filtrar Propietario"
+        data-bs-toggle="tooltip"
+        title="Filtrar propietario por nombre o documento"         
+        [(ngModel)]="buscar"          
+        />
+    </div>
 
     <table class="table-bordered mx-auto">
         <thead>
@@ -20,15 +33,31 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let propietario of listaPropietario">
+            <tr *ngFor="let propietario of listaPropietario | filtroTablaPropietario:pagActual:maxPorPag: buscar;
+            let i = index">
                 <td data-label="ID">{{propietario.id}}</td>
                 <td data-label="Tipo Documento">{{propietario.tipoDocumento}}</td>
                 <td data-label="Documento">{{propietario.documento}}</td>
                 <td data-label="Nombre">{{propietario.nombreCompleto}}</td>
                 <td data-label="Email">{{propietario.email}}</td>
                 <td data-label="Telefono">{{propietario.telefono}}</td>
-                <td></td>
+                <td>
+                    <button class="btn btn-warning" routerLink="/propietario/editar/{{propietario.id}}">
+                        <i class="bi bi-pencil-fill"></i>
+                    </button>
+                    <button class="btn btn-danger mx-1" (click)="eliminarPropietario(propietario.documento)">
+                        <i class="bi bi-trash-fill"></i>
+                    </button>
+                </td>
             </tr>
         </tbody>
     </table>
+    <div class="kb-pagination">
+        <ngb-pagination 
+            [(page)]="pagActual"
+            [pageSize]="maxPorPag"
+            [maxSize]="4"
+            [collectionSize]="totalPropietarios"
+        ></ngb-pagination>
+    </div>
 </div>
