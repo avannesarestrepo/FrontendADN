@@ -7,6 +7,8 @@ import { Propietario } from '@propietario/shared/model/propietario';
 import { PropietarioService } from '@propietario/shared/service/propietario.service';
 import { SharedModule } from '@shared/shared.module';
 import { of } from 'rxjs';
+import { FiltroTablaClass } from '../propietario/propietario-filtro-pipe-class';
+import { PropietarioComponent } from '../propietario/propietario.component';
 
 import { CrearPropietarioComponent } from './crear-propietario.component';
 
@@ -21,15 +23,16 @@ describe('CrearPropietarioComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CrearPropietarioComponent ],
+      declarations: [ CrearPropietarioComponent, FiltroTablaClass ],
       imports: [
         HttpClientTestingModule,
-        RouterTestingModule,
+        RouterTestingModule.withRoutes([{path:'propietario', component: PropietarioComponent}]),
         SharedModule
       ],
       providers:[
         HttpService,
         PropietarioService,
+        FiltroTablaClass,
         {
           provide: ActivatedRoute,
           useValue: {

@@ -33,6 +33,9 @@
       "@propietario/*":[
         "src/app/feature/propietario/*"
       ],
+      "@factura/*":[
+        "src/app/feature/factura/*"
+      ],
       "@shared/*": [
         "src/app/shared/*"
       ]

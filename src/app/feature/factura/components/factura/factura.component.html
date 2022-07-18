@@ -1,0 +1,64 @@
+<div class="container">
+    <button id="linkCrearFactura" routerLink="./crear" class="btn btn-primary mt-3" >
+        <strong class="text-light">Crear Factura</strong>
+    </button>
+    <router-outlet></router-outlet>
+
+    <div class="col-sm-3">
+        <input
+        class="form-control"
+        type="text"
+        id="filterCustomer"
+        autocomplete="off"
+        placeholder="Filtrar Factura"
+        data-bs-toggle="tooltip"
+        title="Filtrar factura por placa"         
+        [(ngModel)]="buscar"          
+        />
+    </div>
+
+    <table class="table-bordered mx-auto">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Modalidad</th>
+                <th>Propietario</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
+                <th>Valor</th>
+                <th>Placa</th>
+                <th>Estado</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let factura of listaFacturas | filtroTablaFactura:pagActual:maxPorPag: buscar;
+            let i = index">
+                <td data-label="ID">{{factura.id}}</td>
+                <td data-label="Modalidad">{{factura.tipoModalidad}}</td>
+                <td data-label="Vehiculo">{{factura.vehiculo != null && factura.tipoModalidad != 'HORA' ? factura.vehiculo.propietarioDTO.documento : ""}}</td>
+                <td data-label="Fecha Inicio">{{factura.fechaInicio}}</td>
+                <td data-label="Fecha Fin">{{factura.fechaFin}}</td>
+                <td data-label="Valor">{{factura.valor}}</td>
+                <td data-label="Placa">{{factura.tipoModalidad != 'HORA' && factura.tipoModalidad != 'DIA' ? factura.vehiculo.placa : factura.placa}}</td>
+                <td data-label="Estado">{{factura.estadoFactura}}</td>
+                <td>
+                    <button class="btn btn-warning" *ngIf="factura?.estadoFactura != 'ANULADA'" routerLink="/factura/editar/{{factura.id}}">
+                        <i class="bi bi-pencil-fill"></i>
+                    </button>
+                    <button class="btn btn-danger mx-1" id="anularFactura" name="anularFactura" (click)="anular(factura)">
+                        <i class="bi bi-trash-fill"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="kb-pagination">
+        <ngb-pagination 
+            [(page)]="pagActual"
+            [pageSize]="maxPorPag"
+            [maxSize]="4"
+            [collectionSize]="totalFacturas"
+        ></ngb-pagination>
+    </div>
+</div>
